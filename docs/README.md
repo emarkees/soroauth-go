@@ -50,6 +50,7 @@ navigation.
 | [root-package-assessment](root-package-assessment.md) | Why the root package is not split into subpackages, with the dependency graph that settles it.            |
 | [glossary](glossary.md)                               | What credential arm, preimage, payload, nonce and delegate ordering mean, with the CAP that defines each. |
 | [security-analysis](security-analysis.md)             | How CodeQL and dependency review run in CI, and how static-analysis findings are triaged.                 |
+| [muxed-addresses](muxed-addresses.md)                 | Audit of muxed account handling across every address-handling site in the library.                        |
 | [FIXTURES](FIXTURES.md)                               | What each e2e fixture contract exercises, and why none is a product.                                      |
 | [ISSUE_BACKLOG](ISSUE_BACKLOG.md)                     | The written-up work that is not done yet; `WAVE9_BACKLOG.json` is the newer Wave's source of truth.       |
 | [WAVE10_BACKLOG](WAVE10_BACKLOG.md)                   | The Wave 10 issue backlog and acceptance criteria.                                                        |
