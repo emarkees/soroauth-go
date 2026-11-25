@@ -10,6 +10,30 @@ this project adheres to
 
 ### Added
 
+- Add five AST-based repository invariant linters (`NoPanic`, `NoLogging`,
+  `NoMathRand`, `NoFloats`, `NoMutation`) in `internal/invariants`, each with
+  violating and compliant test fixtures and an exemption directive
+  (`// invariant-allow: <rule> <reason>`). A root-level test runs all analyzers
+  across the full repo tree. (#627)
+
+- Load custom risk rules from JSON or YAML configuration via `LoadRiskRules`,
+  evaluated alongside built-in heuristics. Four rule types are supported:
+  `contract_allowlist`, `function_allowlist`, `max_amount` and
+  `forbidden_sac_admin`. Malformed rules fail at load time naming the offending
+  rule, and configured rules cannot suppress built-in findings. (#626)
+
+- Add `VerifyInvocationTree` to compare the library's invocation tree against
+  the host's reported tree structurally. A divergence reports the exact path
+  where the trees differ. Comparison covers function type, contract address,
+  function name, arguments and sub-invocations recursively at arbitrary depth.
+  (#625)
+
+- Audit every address-handling site for muxed account behaviour. Muxed addresses
+  in invocation arguments are now reported in full (`M…` strkey) via
+  `FormatArgumentAddress` and `FormatScVal`, never truncated to the underlying
+  account. The canonical JSON encoder/decoder round-trips the `muxed_account`
+  type, and credentials still refuse muxed addresses unchanged. (#624)
+
 - `examples/opentelemetry` traces the whole `rpcflow.SignAndSubmit` flow as one
   OpenTelemetry trace: record pass, signing, enforcing pass, submission and
   polling, with the two passes' resource fees and their difference as
